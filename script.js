@@ -1,32 +1,30 @@
 document.getElementById('postForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    // Get input values
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
+    const imgUrl = document.getElementById('imageLink').value || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=500';
     const content = document.getElementById('content').value;
-    const date = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
-    // Create Blog Post HTML
-    const feed = document.getElementById('blog-feed');
-    const postHTML = `
+    const grid = document.getElementById('blog-grid');
+    
+    // Professional Card HTML
+    const cardHTML = `
         <article class="post-card">
-            <div class="post-meta">Published on ${date} • By ${author}</div>
-            <h3>${title}</h3>
-            <p>${content.substring(0, 200)}...</p>
-            <button class="read-more" style="background:none; border:none; color:#2563eb; cursor:pointer; padding:0; font-weight:600;">Read Full Story</button>
+            <img src="${imgUrl}" alt="Post Image" class="post-img">
+            <div class="post-content">
+                <h3>${title}</h3>
+                <p>${content.substring(0, 100)}...</p>
+                <div style="margin-top: 15px; font-size: 12px; color: #94a3b8;">
+                    <strong>${author}</strong> • Just now
+                </div>
+            </div>
         </article>
     `;
 
-    // Add to the top of feed
-    feed.insertAdjacentHTML('afterbegin', postHTML);
-
-    // Reset form and scroll to feed
+    grid.insertAdjacentHTML('afterbegin', cardHTML);
     document.getElementById('postForm').reset();
-    alert("Congratulations! Your article is live.");
-    window.scrollTo({ top: document.getElementById('blog-feed').offsetTop - 100, behavior: 'smooth' });
+    
+    // Scroll to feed to show the user their post
+    document.getElementById('feed').scrollIntoView({ behavior: 'smooth' });
 });
-
-function scrollToForm() {
-    window.scrollTo({ top: document.getElementById('submission-area').offsetTop - 100, behavior: 'smooth' });
-}
