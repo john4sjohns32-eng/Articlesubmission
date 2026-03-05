@@ -1,77 +1,88 @@
 :root {
-    --text-main: #2c3e50;
-    --accent: #3498db;
-    --bg-light: #f9f9f9;
+    --primary: #000000;
+    --accent: #2563eb;
+    --bg: #ffffff;
+    --card-bg: #fdfdfd;
+    --text: #1a1a1a;
+    --border: #e5e7eb;
 }
 
 body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
     margin: 0;
-    font-family: 'Georgia', serif; /* Classic blog font */
-    color: var(--text-main);
-    background: white;
-    line-height: 1.8;
+    line-height: 1.6;
 }
 
+.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+/* Navbar */
 .navbar {
     padding: 20px 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1000;
 }
 
-.nav-container {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo { font-size: 24px; font-weight: bold; text-decoration: none; color: #000; }
+.navbar .container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 24px; font-weight: 800; text-decoration: none; color: var(--primary); }
 .logo span { color: var(--accent); }
 
-.blog-wrapper {
-    max-width: 700px; /* Narrow width for better readability */
-    margin: 50px auto;
-    padding: 0 20px;
+/* Hero */
+.hero {
+    padding: 80px 0;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
 }
 
-.post-header h1 {
-    font-size: 42px;
-    line-height: 1.2;
-    margin: 10px 0;
+.hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 10px; }
+
+/* Main Grid */
+.main-grid { display: grid; grid-template-columns: 1fr; gap: 40px; margin-top: 40px; }
+
+.card {
+    background: var(--card-bg);
+    padding: 40px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
 }
 
-/* MINI GAME CARD DESIGN */
-.mini-game-card {
-    background: var(--bg-light);
-    border: 2px dashed #ddd;
-    border-radius: 12px;
-    padding: 25px;
-    margin: 40px 0;
+/* Form Styling */
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; font-weight: 600; margin-bottom: 8px; }
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: inherit;
+    box-sizing: border-box;
 }
 
-.game-header {
-    font-family: sans-serif;
-    font-weight: bold;
-    color: var(--accent);
-    margin-bottom: 15px;
-}
-
-.options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-button {
-    font-family: sans-serif;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background: white;
-    border-radius: 6px;
+.btn-submit, .btn-write {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
     cursor: pointer;
-    transition: 0.2s;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
-button:hover { background: #edf7ff; border-color: var(--accent); }
+.btn-submit:hover { background: var(--accent); }
 
-.hide { display: none; }
+/* Blog Feed Card */
+.post-card {
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.post-card h3 { font-size: 28px; margin: 0 0 10px 0; }
+.post-card p { color: #4b5563; }
+.post-meta { font-size: 14px; color: #9ca3af; }
