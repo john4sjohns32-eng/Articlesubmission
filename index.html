@@ -3,39 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanderlust | Travel Blog & Quiz</title>
+    <title>Travel Insights | Professional Blog</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Wanderlust</div>
-        </nav>
-    </header>
 
-    <main class="container">
-        <section class="blog-post">
-            <h1>Exploring the Hidden Gems of the World</h1>
-            <p>Traveling is not just about visiting new places; it's about experiencing different cultures and testing your global knowledge...</p>
-        </section>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Wanderer<span>.</span></a>
+            <ul class="nav-links">
+                <li>Home</li>
+                <li>Articles</li>
+                <li>About</li>
+            </ul>
+        </div>
+    </nav>
 
-        <section id="quiz-section" class="quiz-container">
-            <div class="quiz-header">
-                <h2>Traveler's Trivia ✈️</h2>
-                <p>Test your knowledge before you fly!</p>
+    <div class="blog-wrapper">
+        <header class="post-header">
+            <span class="category">Adventure</span>
+            <h1>The Hidden Magic of Kyoto's Bamboo Forest</h1>
+            <div class="author-info">
+                <p>By <strong>John Doe</strong> • March 5, 2026</p>
             </div>
+        </header>
+
+        <section class="main-content">
+            <p>Traveling to Japan is a dream for many. The blend of ancient tradition and modern technology creates an atmosphere unlike anywhere else in the world. As I walked through the towering bamboo stalks of Arashiyama, the sound of the wind was like a natural symphony...</p>
             
-            <div id="question-container">
-                <p id="question-text">Loading question...</p>
-                <div id="answer-buttons" class="btn-grid"></div>
+            <p>But before we dive deeper into the itinerary, let's see how much you know about Japanese landmarks!</p>
+
+            <div class="mini-game-card">
+                <div class="game-header">
+                    <span>🎮 Quick Knowledge Break</span>
+                </div>
+                <div id="quiz-box">
+                    <p id="question">Loading trivia...</p>
+                    <div id="options" class="options-grid"></div>
+                    <button id="next-btn" class="hide">Next Step</button>
+                </div>
             </div>
 
-            <div class="quiz-footer">
-                <button id="next-btn" class="control-btn hide">Next Question</button>
-                <div id="result-display" class="hide"></div>
-            </div>
+            <p>After the quick break, I continued my journey towards the Golden Pavilion. The reflection of the temple on the water was perfectly still, making it look like a postcard brought to life...</p>
         </section>
-    </main>
+    </div>
 
     <script src="script.js"></script>
 </body>
