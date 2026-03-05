@@ -1,100 +1,99 @@
-// Travel Quiz Data
-const quizData = [
+const questions = [
     {
-        question: "Which country is known as the 'Land of the Rising Sun'?",
-        options: ["China", "Japan", "Thailand", "South Korea"],
-        correct: 1 // Japan is at index 1
+        question: "Which city is famous for its canals and gondolas?",
+        answers: [
+            { text: "Venice", correct: true },
+            { text: "Paris", correct: false },
+            { text: "Amsterdam", correct: false },
+            { text: "London", correct: false }
+        ]
     },
     {
-        question: "In which city would you find the Colosseum?",
-        options: ["Paris", "Athens", "Rome", "Madrid"],
-        correct: 2 // Rome is at index 2
-    },
-    {
-        question: "What is the smallest country in the world?",
-        options: ["Monaco", "Malta", "Vatican City", "San Marino"],
-        correct: 2 // Vatican City is at index 2
+        question: "Where is the Great Barrier Reef located?",
+        answers: [
+            { text: "Brazil", correct: false },
+            { text: "Australia", correct: true },
+            { text: "South Africa", correct: false },
+            { text: "Mexico", correct: false }
+        ]
     }
 ];
+
+const questionElement = document.getElementById("question-text");
+const answerButtonsElement = document.getElementById("answer-buttons");
+const nextButton = document.getElementById("next-btn");
+const resultDisplay = document.getElementById("result-display");
 
 let currentQuestionIndex = 0;
 let score = 0;
 
-// Selecting Elements
-const questionElement = document.getElementById("question");
-const optionsContainer = document.getElementById("options-container");
-const nextButton = document.getElementById("next-btn");
-const scoreArea = document.getElementById("score-area");
-
-// Function to start the quiz
 function startQuiz() {
     currentQuestionIndex = 0;
     score = 0;
-    nextButton.classList.add("hidden");
-    scoreArea.classList.add("hidden");
     showQuestion();
 }
 
-// Function to display a question
 function showQuestion() {
     resetState();
-    let currentQuestion = quizData[currentQuestionIndex];
-    questionElement.innerText = (currentQuestionIndex + 1) + ". " + currentQuestion.question;
+    let currentQuestion = questions[currentQuestionIndex];
+    questionElement.innerText = currentQuestion.question;
 
-    currentQuestion.options.forEach((option, index) => {
+    currentQuestion.answers.forEach(answer => {
         const button = document.createElement("button");
-        button.innerText = option;
-        button.classList.add("option-btn");
-        button.addEventListener("click", () => selectAnswer(index, button));
-        optionsContainer.appendChild(button);
+        button.innerText = answer.text;
+        button.classList.add("btn");
+        if (answer.correct) {
+            button.dataset.correct = answer.correct;
+        }
+        button.addEventListener("click", selectAnswer);
+        answerButtonsElement.appendChild(button);
     });
 }
 
 function resetState() {
-    nextButton.classList.add("hidden");
-    while (optionsContainer.firstChild) {
-        optionsContainer.removeChild(optionsContainer.firstChild);
+    nextButton.classList.add("hide");
+    while (answerButtonsElement.firstChild) {
+        answerButtonsElement.removeChild(answerButtonsElement.firstChild);
     }
 }
 
-// Function to handle answer selection
-function selectAnswer(selectedIndex, button) {
-    let correctIndex = quizData[currentQuestionIndex].correct;
+function selectAnswer(e) {
+    const selectedButton = e.target;
+    const isCorrect = selectedButton.dataset.correct === "true";
     
-    // Disable all buttons after selection
-    const allButtons = optionsContainer.querySelectorAll("button");
-    allButtons.forEach(btn => btn.disabled = true);
-
-    if (selectedIndex === correctIndex) {
-        button.style.backgroundColor = "#55efc4"; // Green for Correct
+    if (isCorrect) {
+        selectedButton.classList.add("correct");
         score++;
     } else {
-        button.style.backgroundColor = "#ff7675"; // Red for Wrong
-        allButtons[correctIndex].style.backgroundColor = "#55efc4"; // Show the right one
+        selectedButton.classList.add("wrong");
     }
 
-    nextButton.classList.remove("hidden");
+    Array.from(answerButtonsElement.children).forEach(button => {
+        if (button.dataset.correct === "true") {
+            button.classList.add("correct");
+        }
+        button.disabled = true;
+    });
+
+    if (questions.length > currentQuestionIndex + 1) {
+        nextButton.classList.remove("hide");
+    } else {
+        showFinalResult();
+    }
 }
 
-// Function for Next Button
 nextButton.addEventListener("click", () => {
     currentQuestionIndex++;
-    if (currentQuestionIndex < quizData.length) {
-        showQuestion();
-    } else {
-        showScore();
-    }
+    showQuestion();
 });
 
-function showScore() {
-    resetState();
+function showFinalResult() {
     questionElement.innerText = "Quiz Completed!";
-    scoreArea.innerHTML = `<h3>You scored ${score} out of ${quizData.length}! 🌍</h3>`;
-    scoreArea.classList.remove("hidden");
-    nextButton.innerText = "Restart Quiz";
-    nextButton.classList.remove("hidden");
-    nextButton.onclick = () => location.reload(); // Simple reload to restart
+    resultDisplay.innerHTML = `<h3>Final Score: ${score} / ${questions.length}</h3>`;
+    resultDisplay.classList.remove("hide");
+    nextButton.innerText = "Restart";
+    nextButton.classList.remove("hide");
+    nextButton.onclick = () => location.reload();
 }
 
-// Initialize the quiz
 startQuiz();
