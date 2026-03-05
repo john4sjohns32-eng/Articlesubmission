@@ -3,50 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Insights | Professional Blog</title>
+    <title>BlogHub | Professional Publishing Platform</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">Wanderer<span>.</span></a>
-            <ul class="nav-links">
-                <li>Home</li>
-                <li>Articles</li>
-                <li>About</li>
-            </ul>
+        <div class="container">
+            <a href="#" class="logo">Blog<span>Hub</span></a>
+            <div class="nav-actions">
+                <button onclick="scrollToForm()" class="btn-write">Write a Story</button>
+            </div>
         </div>
     </nav>
 
-    <div class="blog-wrapper">
-        <header class="post-header">
-            <span class="category">Adventure</span>
-            <h1>The Hidden Magic of Kyoto's Bamboo Forest</h1>
-            <div class="author-info">
-                <p>By <strong>John Doe</strong> • March 5, 2026</p>
-            </div>
-        </header>
+    <header class="hero">
+        <div class="container">
+            <h1>Publish your passions, your way</h1>
+            <p>Create a unique and beautiful blog. It’s easy and free.</p>
+        </div>
+    </header>
 
-        <section class="main-content">
-            <p>Traveling to Japan is a dream for many. The blend of ancient tradition and modern technology creates an atmosphere unlike anywhere else in the world. As I walked through the towering bamboo stalks of Arashiyama, the sound of the wind was like a natural symphony...</p>
-            
-            <p>But before we dive deeper into the itinerary, let's see how much you know about Japanese landmarks!</p>
-
-            <div class="mini-game-card">
-                <div class="game-header">
-                    <span>🎮 Quick Knowledge Break</span>
+    <main class="container main-grid">
+        <section id="submission-area" class="card">
+            <h2>Create New Post</h2>
+            <form id="postForm">
+                <div class="input-group">
+                    <label>Article Title</label>
+                    <input type="text" id="title" placeholder="Give your story a title..." required>
                 </div>
-                <div id="quiz-box">
-                    <p id="question">Loading trivia...</p>
-                    <div id="options" class="options-grid"></div>
-                    <button id="next-btn" class="hide">Next Step</button>
+                <div class="input-group">
+                    <label>Your Name</label>
+                    <input type="text" id="author" placeholder="Author name" required>
                 </div>
-            </div>
-
-            <p>After the quick break, I continued my journey towards the Golden Pavilion. The reflection of the temple on the water was perfectly still, making it look like a postcard brought to life...</p>
+                <div class="input-group">
+                    <label>Content</label>
+                    <textarea id="content" rows="8" placeholder="Tell your story..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Publish Now</button>
+            </form>
         </section>
-    </div>
+
+        <section class="feed-area">
+            <h2>Latest Stories</h2>
+            <div id="blog-feed">
+                </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
