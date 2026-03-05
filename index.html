@@ -3,29 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Interactive Blog</title>
+    <title>Wanderlust | Travel Blog & Quiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <header>
-        <h1>Game-O-Blog</h1>
+        <nav>
+            <div class="logo">Wanderlust</div>
+        </nav>
     </header>
 
-    <main class="content">
-        <article>
-            <h2>UI Design Kya Hai?</h2>
-            <p>UI (User Interface) design wo process hai jiske zariye hum digital products ko sundar aur aasan banate hain...</p>
-        </article>
+    <main class="container">
+        <section class="blog-post">
+            <h1>Exploring the Hidden Gems of the World</h1>
+            <p>Traveling is not just about visiting new places; it's about experiencing different cultures and testing your global knowledge...</p>
+        </section>
 
-        <div id="quiz-container" class="quiz-card">
-            <h3>Quick Challenge! 🎮</h3>
-            <div id="question">Sawal yahan dikhega...</div>
-            <div id="options-container">
-                </div>
-            <button id="next-btn" class="hidden">Next Question</button>
-            <div id="score-area" class="hidden"></div>
-        </div>
+        <section id="quiz-section" class="quiz-container">
+            <div class="quiz-header">
+                <h2>Traveler's Trivia ✈️</h2>
+                <p>Test your knowledge before you fly!</p>
+            </div>
+            
+            <div id="question-container">
+                <p id="question-text">Loading question...</p>
+                <div id="answer-buttons" class="btn-grid"></div>
+            </div>
+
+            <div class="quiz-footer">
+                <button id="next-btn" class="control-btn hide">Next Question</button>
+                <div id="result-display" class="hide"></div>
+            </div>
+        </section>
     </main>
 
     <script src="script.js"></script>
