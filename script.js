@@ -4,38 +4,44 @@ const ctx = canvas.getContext('2d');
 canvas.width = 800;
 canvas.height = 400;
 
+// Game Variables
 let car = {
-    x: 100,
+    x: 150,
     y: 0,
-    width: 50,
-    height: 30,
+    w: 50,
+    h: 25,
     vY: 0,
-    rot: 0,
+    angle: 0,
     speed: 0
 };
 
 let ground = [];
-let viewOffset = 0;
+let offset = 0;
 
-// Generate smooth hills using sine waves
-for (let i = 0; i < 2000; i++) {
-    ground.push(canvas.height - (Math.sin(i * 0.02) * 50 + Math.cos(i * 0.05) * 30 + 100));
+// Generate smooth terrain (hills)
+for (let i = 0; i < 5000; i++) {
+    ground[i] = 300 - Math.sin(i * 0.02) * 50 - Math.cos(i * 0.05) * 20;
 }
 
 function update() {
-    // Gravity and Ground collision
-    let currentX = Math.floor(car.x + viewOffset);
-    let groundY = ground[currentX];
+    // Determine ground position under the car
+    let groundX = Math.floor(car.x + offset);
+    let targetY = ground[groundX] - car.h;
 
-    if (car.y < groundY - car.height) {
-        car.vY += 0.5; // Gravity
+    // Gravity and Physics
+    if (car.y < targetY) {
+        car.vY += 0.8; // Gravity pulling down
     } else {
         car.vY = 0;
-        car.y = groundY - car.height;
+        car.y = targetY; // Stay on ground
+        
+        // Calculate car angle based on hill slope
+        let nextGroundY = ground[groundX + 5];
+        car.angle = Math.atan2(nextGroundY - ground[groundX], 5);
     }
 
     car.y += car.vY;
-    viewOffset += car.speed;
+    offset += car.speed;
 
     draw();
     requestAnimationFrame(update);
@@ -44,27 +50,42 @@ function update() {
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    // Draw Sky
+    ctx.fillStyle = "#87CEEB";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
     // Draw Ground
     ctx.beginPath();
     ctx.moveTo(0, canvas.height);
     for (let i = 0; i < canvas.width; i++) {
-        ctx.lineTo(i, ground[i + Math.floor(viewOffset)]);
+        ctx.lineTo(i, ground[i + Math.floor(offset)]);
     }
     ctx.lineTo(canvas.width, canvas.height);
-    ctx.fillStyle = "#4d2926"; // Dirt color
+    ctx.fillStyle = "#4d2926"; // Dark Brown Ground
     ctx.fill();
 
-    // Draw Car (Simple Box for now)
+    // Draw Car with Rotation
     ctx.save();
-    ctx.translate(car.x, car.y);
-    ctx.fillStyle = "red";
-    ctx.fillRect(0, 0, car.width, car.height);
+    ctx.translate(car.x, car.y + car.h);
+    ctx.rotate(car.angle);
+    
+    // Car Body
+    ctx.fillStyle = "#e74c3c"; // Red Car
+    ctx.fillRect(-car.w/2, -car.h, car.w, car.h);
+    
+    // Wheels (Static for now)
+    ctx.fillStyle = "black";
+    ctx.beginPath();
+    ctx.arc(-15, 0, 8, 0, Math.PI * 2);
+    ctx.arc(15, 0, 8, 0, Math.PI * 2);
+    ctx.fill();
+    
     ctx.restore();
 }
 
-// Controls
+// Input Handling
 window.addEventListener('keydown', (e) => {
-    if (e.key === "ArrowRight") car.speed = 5;
+    if (e.key === "ArrowRight") car.speed = 4;
     if (e.key === "ArrowLeft") car.speed = -2;
 });
 
