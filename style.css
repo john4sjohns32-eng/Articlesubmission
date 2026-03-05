@@ -1,59 +1,77 @@
 :root {
-    --primary-color: #2563eb;
-    --success-color: #22c55e;
-    --error-color: #ef4444;
-    --bg-color: #f8fafc;
+    --text-main: #2c3e50;
+    --accent: #3498db;
+    --bg-light: #f9f9f9;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
     margin: 0;
-    color: #1e293b;
-}
-
-.container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
-}
-
-.quiz-container {
+    font-family: 'Georgia', serif; /* Classic blog font */
+    color: var(--text-main);
     background: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
+    line-height: 1.8;
 }
 
-.btn-grid {
+.navbar {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.nav-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo { font-size: 24px; font-weight: bold; text-decoration: none; color: #000; }
+.logo span { color: var(--accent); }
+
+.blog-wrapper {
+    max-width: 700px; /* Narrow width for better readability */
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.post-header h1 {
+    font-size: 42px;
+    line-height: 1.2;
+    margin: 10px 0;
+}
+
+/* MINI GAME CARD DESIGN */
+.mini-game-card {
+    background: var(--bg-light);
+    border: 2px dashed #ddd;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 40px 0;
+}
+
+.game-header {
+    font-family: sans-serif;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+
+.options-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin: 20px 0;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
 
 button {
-    padding: 15px;
-    border: 1px solid #e2e8f0;
-    border-radius: 0.5rem;
+    font-family: sans-serif;
+    padding: 10px;
+    border: 1px solid #ccc;
     background: white;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.2s;
+    transition: 0.2s;
 }
 
-button:hover {
-    background: #f1f5f9;
-    border-color: var(--primary-color);
-}
+button:hover { background: #edf7ff; border-color: var(--accent); }
 
-.correct { background-color: var(--success-color) !important; color: white; }
-.wrong { background-color: var(--error-color) !important; color: white; }
 .hide { display: none; }
-
-.control-btn {
-    background: var(--primary-color);
-    color: white;
-    width: 100%;
-}
