@@ -1,85 +1,25 @@
-/* Design Variables */
-:root {
-    --primary: #000;
-    --accent: #2563eb;
-    --gray: #64748b;
-    --bg: #ffffff;
-    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04);
-}
-
 body {
     margin: 0;
-    font-family: 'Inter', sans-serif;
-    color: #1a1a1a;
-    background-color: #fafafa;
+    overflow: hidden;
+    background: #87CEEB; /* Sky color */
+    font-family: sans-serif;
 }
 
-.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
-/* Navigation */
-.main-nav {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    padding: 20px 0;
-    position: sticky;
-    top: 0;
-    border-bottom: 1px solid #eee;
-    z-index: 1000;
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-.main-nav .container { display: flex; justify-content: space-between; align-items: center; }
-.brand { font-family: 'Playfair Display', serif; font-size: 26px; text-decoration: none; color: #000; }
-.brand span { color: var(--accent); }
-
-.cta-nav {
-    background: var(--primary);
-    color: white;
-    padding: 10px 22px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: 0.3s;
+canvas {
+    background: #fff;
+    border: 4px solid #333;
+    border-radius: 10px;
 }
 
-/* Hero Section */
-.home-hero {
-    padding: 100px 0;
-    text-align: center;
-    border-bottom: 1px solid #f0f0f0;
+.controls {
+    margin-top: 10px;
+    color: #333;
 }
-
-.badge {
-    background: #eff6ff;
-    color: var(--accent);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.home-hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 52px;
-    max-width: 800px;
-    margin: 20px auto;
-}
-
-/* Form Design */
-.submission-section { margin-top: -60px; background: white; padding: 40px; border-radius: 12px; box-shadow: var(--card-shadow); }
-.post-form input, .post-form textarea {
-    width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 16px; box-sizing: border-box;
-}
-
-.btn-publish {
-    background: var(--accent);
-    color: white; border: none; padding: 15px 30px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 16px;
-}
-
-/* Blog Grid */
-.blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
-.post-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); border: 1px solid #f0f0f0; transition: 0.3s; }
-.post-card:hover { transform: translateY(-5px); }
-.post-img { width: 100%; height: 200px; object-fit: cover; background: #eee; }
-.post-content { padding: 20px; }
-.post-content h3 { font-family: 'Playfair Display', serif; margin: 0 0 10px 0; }
-.post-content p { color: var(--gray); font-size: 14px; }
