@@ -2,55 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlogMaster | Professional Publishing</title>
+    <title>Hill Climb Racing Clone</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <nav class="main-nav">
-        <div class="container">
-            <a href="index.html" class="brand">Blog<span>Master</span></a>
-            <div class="nav-links">
-                <a href="#feed">Explore</a>
-                <a href="#create" class="cta-nav">Write a Story</a>
-            </div>
+    <div class="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div class="controls">
+            <p>Use <b>Left/Right Arrows</b> to Balance | <b>Gas/Brake</b></p>
         </div>
-    </nav>
-
-    <header class="home-hero">
-        <div class="container">
-            <span class="badge">Professional Choice</span>
-            <h1>The home for great writers and even better stories.</h1>
-            <p>A minimalist platform for thinkers, creators, and explorers.</p>
-        </div>
-    </header>
-
-    <div class="container main-content">
-        <section id="create" class="submission-section">
-            <div class="section-title">
-                <h2>Start Writing</h2>
-                <p>Share your thoughts with the world in seconds.</p>
-            </div>
-            <form id="postForm" class="post-form">
-                <input type="text" id="title" placeholder="Article Title..." required>
-                <input type="text" id="author" placeholder="Your Name" required>
-                <input type="url" id="imageLink" placeholder="Feature Image URL (Optional)">
-                <textarea id="content" rows="6" placeholder="Write your story here..." required></textarea>
-                <button type="submit" class="btn-publish">Publish to Feed</button>
-            </form>
-        </section>
-
-        <section id="feed" class="feed-section">
-            <div class="section-title">
-                <h2>Latest from the Community</h2>
-            </div>
-            <div id="blog-grid" class="blog-grid">
-                </div>
-        </section>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
