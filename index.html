@@ -1,163 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>ADVENTURE | Travel Blog Submission</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="responsive.css" />
-        <style>
-            /* Quick fix for Blog styling */
-            .hero-blog {
-                background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&w=1920&q=80');
-                background-size: cover;
-                background-attachment: fixed;
-                height: 70vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                color: white;
-            }
-            .blog-form-container {
-                padding: 100px 0;
-                background: #f9f9f9;
-            }
-            body.dark .blog-form-container {
-                background: #1a1a1a;
-            }
-        </style>
-    </head>
-    <body>
-        <nav class="navbar glass" style="height: 70px">
-            <span>
-                <a href="#home" style="display: flex; align-items: center">
-                    <img class="img2" src="https://img.icons8.com/ios-filled/50/ffffff/mountain.png" width="30" />
-                    <h1 class="logo">&nbsp;ADVENTURE</h1>
-                </a>
-            </span>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADVENTURE | Beyond Borders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+</head>
+<body class="dark-theme">
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">ADVENTURE<span>.</span></div>
             <ul class="nav-links">
-                <li><a href="#home" class="active cir_border">Home</a></li>
-                <li><a href="#submit" class="cir_border">Submit Story</a></li>
-                <li><a href="#contact" class="cir_border">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#submit" class="nav-btn">Post a Story</a></li>
+                <li><a href="#contact">Contact</a></li>
                 <li>
-                    <div>
-                        <input type="checkbox" class="checkbox dark" id="checkbox" />
+                    <div class="theme-switch">
+                        <input type="checkbox" id="checkbox" class="checkbox">
                         <label for="checkbox" class="label">
-                            <i class="fa fa-moon-o"></i>
-                            <i class="fa fa-sun-o"></i>
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
                             <div class="ball"></div>
                         </label>
                     </div>
                 </li>
             </ul>
-            <img src="./img/menu-btn.png" alt="" class="menu-btn" />
-        </nav>
+            <div class="menu-btn"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
 
-        <header id="home" class="hero-blog">
-            <div class="header-content">
-                <h2 id="quote">Your Journey, Your Voice</h2>
-                <div class="line"></div>
-                <h1>SHARE YOUR ADVENTURE</h1>
-                <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">Duniya ko apni travel stories sunaiye.</p>
-                <a href="#submit" class="ctn">Start Writing</a>
+    <header id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2 class="reveal-text">Escape the Ordinary</h2>
+            <div class="glitch-wrapper">
+                <h1 class="glitch" data-text="ADVENTURE">ADVENTURE</h1>
             </div>
-        </header>
-
-        <section id="submit" class="blog-form-container">
-            <div class="container">
-                <div class="title">
-                    <h1 class="font-color">Write Your Travel Blog</h1>
-                    <div class="line"></div>
-                    <p class="font-color" style="font-size: 1rem; margin-top: 10px;">Post your experiences, tips, and photos.</p>
-                </div>
-                
-                <div class="contact_us" style="margin-top: 50px;">
-                    <form class="cform" id="blogForm" action="https://formspree.io/f/YOUR_ID" method="POST" style="width: 100%; max-width: 900px; margin: auto;">
-                        <div class="crow-message">
-                            <h1 class="color" style="color:white;">Submit Post</h1>
-                        </div>
-                        
-                        <div class="crow-in">
-                            <input type="text" name="PostTitle" placeholder="Blog Title (e.g., Weekend in Jaipur)" required />
-                            <input type="text" name="AuthorName" placeholder="Your Name" required />
-                        </div>
-                        
-                        <div class="crow">
-                            <div class="ccol-left">
-                                <select name="Category" id="category">
-                                    <option value="trekking">Mountain Trekking</option>
-                                    <option value="beach">Beach Life</option>
-                                    <option value="budget">Budget Travel</option>
-                                    <option value="food">Local Food</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="crow">
-                            <div class="ccol-left">
-                                <textarea name="BlogContent" placeholder="Describe your journey in detail (Min 100 words recommended)..." style="height: 300px" required></textarea>
-                            </div>
-                        </div>
-
-                        <div class="crow" style="padding: 1rem;">
-                            <label class="font-color">Add Image URL (Unsplash/Imgur link):</label>
-                            <input type="text" name="ImageURL" placeholder="https://example.com/image.jpg" />
-                        </div>
-
-                        <input class="crow-s" type="submit" value="Publish My Adventure" style="width: 100%; border-radius: 50px; cursor: pointer;" />
-                    </form>
-                </div>
+            <p>A space for explorers to document the undocumented. Share your journey with the world.</p>
+            <div class="hero-btns">
+                <a href="#submit" class="ctn-primary">Start Writing</a>
+                <a href="#contact" class="ctn-outline">Get in Touch</a>
             </div>
-        </section>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <span>Scroll to Explore</span>
+        </div>
+    </header>
 
-        <section id="contact">
-            <div class="title">
-                <h1 class="font-color">Contact Us</h1>
-                <div class="line"></div>
+    <section id="submit" class="submission-area">
+        <div class="container">
+            <div class="section-header">
+                <span class="sub-title">Contribute</span>
+                <h2>Tell Your Tale</h2>
+                <div class="accent-line"></div>
             </div>
-            <div class="contact_us">
-                <form class="cform" action="" method="post">
-                    <div class="crow-message"><h1 class="color">Get in Touch</h1></div>
-                    <div class="crow-in">
-                        <input type="text" name="name" placeholder="Name" />
-                        <input type="text" name="email" placeholder="Email" />
+
+            <div class="glass-card">
+                <form id="articleForm" class="modern-form" action="https://formspree.io/f/YOUR_ID" method="POST">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Post Title</label>
+                            <input type="text" name="title" placeholder="e.g. Lost in Tokyo" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Explorer Name</label>
+                            <input type="text" name="author" placeholder="Your Name" required>
+                        </div>
                     </div>
-                    <div class="crow">
-                        <textarea name="message" placeholder="Message..." style="height: 100px"></textarea>
+                    
+                    <div class="input-group">
+                        <label>Category</label>
+                        <select name="category">
+                            <option value="mountains">Mountain Treks</option>
+                            <option value="coastal">Coastal Vibes</option>
+                            <option value="urban">Urban Exploration</option>
+                            <option value="hidden">Hidden Gems</option>
+                        </select>
                     </div>
-                    <input class="crow-s" type="submit" value="Submit" />
+
+                    <div class="input-group">
+                        <label>Your Experience</label>
+                        <textarea name="content" placeholder="Pour your soul into words..." required></textarea>
+                    </div>
+
+                    <div class="form-footer">
+                        <p class="guideline">By submitting, you agree to our <b>Code of Conduct</b>.</p>
+                        <button type="submit" class="submit-action">Publish Article <i class="fas fa-paper-plane"></i></button>
+                    </div>
                 </form>
-                <div class="cbox">
-                    <div class="c_boxx">
-                        <a href="mailto:tourism@adventure.com"><i class="fa fa-envelope"></i> tourism@adventure.com</a>
-                    </div>
-                    <p class="font-color">Location: Kolkata, India</p>
-                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <i class="arrow" onclick="topFunction()" id="upbtn"></i>
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Got Questions?</h2>
+                    <p>Reach out to us for collaborations or support.</p>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>hello@adventure.com</span>
+                    </div>
+                </div>
+                <form class="mini-form">
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Message..." required></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-        <section class="footer">
-            <span>Created By Pritam Sarbajna | &#169; 2026 All rights reserved.</span>
-            <div class="social">
-                <li><a href="#"><i class="fa fa-github"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-            </ul>
-        </section>
+    <footer class="main-footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 ADVENTURE. All rights reserved.</p>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-        <script src="js/script.js"></script>
-        <script>
-            // Simple logic for Navbar Mobile
-            const menuBtn = document.querySelector(".menu-btn");
-            const navlinks = document.querySelector(".nav-links");
-            menuBtn.addEventListener("click", () => {
-                navlinks.classList.toggle("mobile-menu");
-            });
-        </script>
-    </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>
